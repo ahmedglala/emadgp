@@ -8,7 +8,12 @@ const cartRoute = require('./routes/cart.route');
 const orderRoute=require('./routes/order.route') ;
 const {errorHandler} = require('./middleware/errorHandler')
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions));
 app.use('/uploads',express.static('./uploads'))
 app.use(express.json());
 
